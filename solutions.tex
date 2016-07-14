@@ -1,0 +1,146 @@
+% Free range VHDL
+% Authors: Bryan Mealy, Fabrizio Tappero
+% Date: May, 2012
+% URL: freerangefactory.org
+% (C) 2013 B. Mealy, F. Tappero
+%
+% !TEX root = master.tex
+%
+% Solutions for the exercises
+% Authors: Stefan Gänsler
+\chapter{Exercises Solutions}
+This chapter provides example solutions for the exercises in this book. Be aware that solutions here are not always the only solution. W we wanted to give you a recommendation for example solutions so you can compare with your answers.
+
+\section{Solutions for Section~\ref{vhdl_design_units_exercises}}
+\begin{my_num_list}
+	\item \textit{What is referred to by the word bundle?}\\
+	``Bundle'' is used to refer to a set of similar signals. These are commonly referred to as ``bus signals'' in computer lingo.
+	
+	\item \textit{What is a common method of representing bundles in black-box diagrams?}\\
+	\begin{minipage}{\linewidth}
+	    \centering
+		\begin{tikzpicture}[x=1mm,y=1mm,line width=0.8pt,scale=0.8,framed]
+		%\draw[help lines] (0,0) grid (50,50);
+		% BOX
+		\draw (20,0) rectangle (37,8) node[midway]{};
+		% INPUTS
+		\small
+		\node (hide) at (0,10) {}; % just to expand background
+		\node (a) at (20,0) {}; % this is the reference point
+		\draw [latex-] ($(a)+(0,4)$) -- ++(-10,0) node[left]{bundle\_input} node[pos=0.4,above]{3} node[pos=0.7]{/};
+		% OUTPUTS
+		\draw [-latex] ($(a)+(17,4)$) -- ++(10,0) node[right]{bundle\_output} node[pos=0.7,above]{8} node[pos=0.4]{/};
+		\end{tikzpicture}
+	\end{minipage}
+	
+	\item \textit{Why is it considered a good approach to always draw a black-box diagram when using VHDL to model digital circuits?}\\
+	First, it simplifies the design from a systems standpoint. Examining a circuit diagram containing appropriately named black boxes is much more understandable than staring at a circuit containing a countless number of logic gates. Second, the black-box approach allows for the reuse of previously written code.
+	
+	\item \textit{Write VHDL entity declarations that describe the following black-box diagrams [...]}\\
+	\noindent
+	\begin{minipage}{1\linewidth}
+		a)
+		\begin{lstlisting}[]		
+		entity sys1 is
+		port (
+			a_in1, b_in2, clk, ctrl_int   : in  std_logic;
+			out_b                         : out std_logic;
+		end sys1;
+		\end{lstlisting}
+	\end{minipage}	
+	\noindent
+	\begin{minipage}{1\linewidth}
+		b)
+		\begin{lstlisting}[]		
+		entity sys2 is
+		port (
+			input_w, clk     : in  std_logic;
+			a_data, b_data   : in  std_logic_vector(7 downto 0);
+			dat_4            : out std_logic_vector(7 downto 0);
+			dat_5            : out std_logic_vector(2 downto 0);
+		end sys2;
+		\end{lstlisting}
+	\end{minipage}	
+	
+	\item \textit{Provide black-box diagrams that are defined by the following VHDL entity declarations [...]}\\
+	a)\\
+	\noindent
+	\begin{minipage}{\linewidth}
+		\centering
+		\vspace{5pt}
+		\begin{tikzpicture}[x=1mm,y=1mm,line width=0.8pt,scale=0.8,framed]
+			%\draw[help lines] (0,0) grid (50,50);
+			% BOX
+			\draw (20,5) rectangle (37,35) node[midway]{ckt\_c};
+			% INPUTS
+			\small
+			\node (hide) at (0,35) {}; % just to expand background
+			\node (a) at (20,-2.5) {}; % this is the reference point
+			\draw [latex-] ($(a)+(0,35)$) -- ++(-10,0) node[left]{bun\_a} node[pos=0.4,above]{8} node[pos=0.7]{/};
+			\draw [latex-] ($(a)+(0,30)$) -- ++(-10,0) node[left]{bun\_b} node[pos=0.4,above]{8} node[pos=0.7]{/};
+			\draw [latex-] ($(a)+(0,25)$) -- ++(-10,0) node[left]{bun\_c} node[pos=0.4,above]{8} node[pos=0.7]{/};
+			\draw [latex-] ($(a)+(0,20)$) -- ++(-10,0) node[left]{lda};
+			\draw [latex-] ($(a)+(0,15)$) -- ++(-10,0) node[left]{ldb};
+			\draw [latex-] ($(a)+(0,10)$) -- ++(-10,0) node[left]{ldc};
+			% OUTPUTS
+			\draw [-latex] ($(a)+(17,32.5)$) -- ++(10,0) node[right]{reg\_a} node[pos=0.7,above]{8} node[pos=0.4]{/};
+			\draw [-latex] ($(a)+(17,22.5)$) -- ++(10,0) node[right]{reg\_b} node[pos=0.7,above]{8} node[pos=0.4]{/};
+			\draw [-latex] ($(a)+(17,12.5)$) -- ++(10,0) node[right]{reg\_c} node[pos=0.7,above]{8} node[pos=0.4]{/};
+		\end{tikzpicture}
+	\end{minipage}
+	b)\\
+	\noindent
+	\begin{minipage}{\linewidth}
+		\centering
+		\vspace{5pt}
+		\begin{tikzpicture}[x=1mm,y=1mm,line width=0.8pt,scale=0.8,framed]
+			%\draw[help lines] (0,0) grid (50,50);
+			% BOX
+			\draw (20,5) rectangle (37,40) node[midway]{ckt\_e};
+			% INPUTS
+			\small
+			\node (hide) at (0,40) {}; % just to expand background
+			\node (a) at (20,-2.5) {}; % this is the reference point
+			\draw [latex-] ($(a)+(0,40)$) -- ++(-10,0) node[left]{RAM\_CS};
+			\draw [latex-] ($(a)+(0,35)$) -- ++(-10,0) node[left]{RAM\_WE};
+			\draw [latex-] ($(a)+(0,30)$) -- ++(-10,0) node[left]{RAM\_DE};
+			\draw [latex-] ($(a)+(0,25)$) -- ++(-10,0) node[left]{SEL\_OP1} node[pos=0.4,above]{4} node[pos=0.7]{/};
+			\draw [latex-] ($(a)+(0,20)$) -- ++(-10,0) node[left]{SEL\_OP2} node[pos=0.4,above]{4} node[pos=0.7]{/};
+			\draw [latex-] ($(a)+(0,15)$) -- ++(-10,0) node[left]{RAM\_DATA\_IN} node[pos=0.4,above]{8} node[pos=0.7]{/};
+			\draw [latex-] ($(a)+(0,10)$) -- ++(-10,0) node[left]{RAM\_ADDR\_IN} node[pos=0.4,above]{10} node[pos=0.7]{/};
+			% OUTPUTS
+			\draw [-latex] ($(a)+(17,25)$) -- ++(10,0) node[right]{RAM\_DATA\_OUT} node[pos=0.7,above]{8} node[pos=0.4]{/};
+		\end{tikzpicture}
+	\end{minipage}
+	
+	\item \textit{The following two entity declarations each contain two of the most common syntax errors made in VHDL. What are they?}
+	
+	\noindent
+	\begin{minipage}{1\linewidth}
+		a)
+		\begin{lstlisting}[]
+		
+		entity ckt_a is
+		port (
+		J,K : in  std_logic;
+		CLK : in  std_logic; -- last semicolon was missing
+		Q   : out std_logic); -- last semicolon has to be outside the bracket
+		end ckt_a;
+		\end{lstlisting}
+	\end{minipage}
+	
+	\noindent
+	\begin{minipage}{1\linewidth}
+		b)
+		\begin{lstlisting}[]
+		
+		entity ckt_b is
+		port (
+		mr_fluffy   : in  std_logic_vector(15 downto 0);
+		mux_ctrl    : in  std_logic_vector(3 downto 0);
+		byte_out    : out std_logic_vector(3 downto 0)); -- closing bracket for port was missing, semicolon has to be writtenafter closing bracket
+		end ckt_b;
+		\end{lstlisting}
+	\end{minipage}	
+		
+\end{my_num_list}

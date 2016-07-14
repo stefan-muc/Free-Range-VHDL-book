@@ -244,6 +244,9 @@ As a final note, let us to remind that the type \texttt{std\_logic} only exists 
 \end{my_list}
 
 \section{Exercises}
+\label{vhdl_design_units_exercises}
+% be sure to also modify solutions.tex when you change exercises here
+
 \begin{my_num_list}
 \item What is referred to by the word bundle?
 \item What is a common method of representing bundles in black-box diagrams?
@@ -323,7 +326,7 @@ end ckt_e;
 \end{lstlisting}
 \end{minipage}
 
-\item The following two entity declarations contain two of the most common syntax errors made in VHDL. What are they?
+\item The following two entity declarations each contain two of the most common syntax errors made in VHDL. What are they?
 
 \noindent
 \begin{minipage}{1\linewidth}
@@ -346,9 +349,9 @@ b)
 
 entity ckt_b is
 port (
-mr_fluffy   : in  std_logic_vector(15 downto 0);
-mux_ctrl    : in  std_logic_vector(3 downto 0);
-byte_out    : out std_logic_vector(3 downto 0);
+	mr_fluffy   : in  std_logic_vector(15 downto 0);
+	mux_ctrl    : in  std_logic_vector(3 downto 0);
+	byte_out    : out std_logic_vector(3 downto 0);
 end ckt_b;
 \end{lstlisting}
 \end{minipage}
