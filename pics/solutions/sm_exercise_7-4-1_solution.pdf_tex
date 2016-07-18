@@ -1,0 +1,79 @@
+%% Creator: Inkscape 0.91_64bit, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'sm_exercise_7-4-1_solution.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{464bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.60560345)%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{sm_exercise_7-4-1_solution.pdf}}%
+    \put(0.54197274,0.10543403){\makebox(0,0)[lb]{\smash{State}}}%
+    \put(0.55488677,0.05808259){\makebox(0,0)[lb]{\smash{Z1}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{sm_exercise_7-4-1_solution.pdf}}%
+    \put(0.08058201,0.45841793){\makebox(0,0)[lb]{\smash{A}}}%
+    \put(0.08381052,0.41106649){\makebox(0,0)[lb]{\smash{0}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{sm_exercise_7-4-1_solution.pdf}}%
+    \put(0.0913437,0.5728879){\makebox(0,0)[b]{\smash{0/1}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{sm_exercise_7-4-1_solution.pdf}}%
+    \put(0.56134378,0.45841793){\makebox(0,0)[lb]{\smash{B}}}%
+    \put(0.56457229,0.41106649){\makebox(0,0)[lb]{\smash{1}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{sm_exercise_7-4-1_solution.pdf}}%
+    \put(0.33172588,0.45196092){\makebox(0,0)[b]{\smash{1/0}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{sm_exercise_7-4-1_solution.pdf}}%
+    \put(0.33172588,0.41106649){\makebox(0,0)[b]{\smash{0/0}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{sm_exercise_7-4-1_solution.pdf}}%
+    \put(0.89790065,0.37662907){\makebox(0,0)[lb]{\smash{C}}}%
+    \put(0.90112915,0.32927763){\makebox(0,0)[lb]{\smash{1}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=8]{sm_exercise_7-4-1_solution.pdf}}%
+    \put(0.74038387,0.42828519){\makebox(0,0)[b]{\smash{1/1}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=9]{sm_exercise_7-4-1_solution.pdf}}%
+    \put(0.74038387,0.36371505){\makebox(0,0)[b]{\smash{0/1}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=10]{sm_exercise_7-4-1_solution.pdf}}%
+    \put(0.74038387,0.31205893){\makebox(0,0)[b]{\smash{RESET}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=11]{sm_exercise_7-4-1_solution.pdf}}%
+    \put(0.33172588,0.09897701){\makebox(0,0)[b]{\smash{input(X)/output(Z2)}}}%
+  \end{picture}%
+\endgroup%

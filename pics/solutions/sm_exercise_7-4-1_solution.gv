@@ -1,0 +1,19 @@
+digraph finite_state_machine {
+	rankdir=LR;
+	size="8,5"
+	node [shape = circle];
+	legend [ label = <<table border="0" cellborder="1"><tr><td sides="b">State</td></tr><tr><td border="0">Z1</td></tr></table>>];
+	A [ label = <<table border="0" cellborder="1"><tr><td sides="b">A</td></tr><tr><td border="0">0</td></tr></table>>];
+	B [ label = <<table border="0" cellborder="1"><tr><td sides="b">B</td></tr><tr><td border="0">1</td></tr></table>>];
+	C [ label = <<table border="0" cellborder="1"><tr><td sides="b">C</td></tr><tr><td border="0">1</td></tr></table>>];
+	A -> A [ label = "0/1" ];
+	A -> B [ label = "1/0" ];
+	B -> A [ label = "0/0" ];
+	B -> C [ label = "1/1" ];
+	C -> B [ label = "0/1" ];
+
+
+	node [style="invis"];
+	inv1 -> C [ label = "RESET" ];
+	inv2 -> legend [ label = "input(X)/output(Z2)" ];
+}

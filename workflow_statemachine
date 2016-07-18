@@ -1,0 +1,28 @@
+Proposed Workflow to Include State Diagrams
+written in GraphViz
+
+This is a workflow I figured out that it's working quite good, but it has manual steps to do - maybe these can be automated.
+
+Benefits:
+* Include State Diagrams as vector graphics
+* Get state machine typesetting done in LaTeX
+
+One example state machine already is included in section D.5 Exercise 1 (filename: sm_exercise_7-4-1_solution)
+
+Steps to include a GraphViz diagram
+Step 1:
+Write your GraphViz diagram and save it as example.gv file
+
+Step 2:
+Export GraphViz diagram as example.svg
+
+Step 3:
+Open example.svg with Inkscape and save it as PDF+LaTeX
+To do this, choose File -> Save as... -> select "Portable Document Format" -> [Save] -> [X] PDF+LaTeX: Omit text in PDF, and create LaTeX file
+
+Step 4:
+In *.tex document, include following lines:
+	\def\svgwidth{0.9\linewidth} % compromise between text and graphics size
+	\import{path/to/file/}{example.pdf_tex}
+
+Voila =)
