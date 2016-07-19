@@ -99,7 +99,7 @@ begin
         if CLR = '1' then
             OUT1 <= '0';
         elsif rising_edge(CLK) then --std_logic_1164 gives rising_edge()
-            Y1 <= A + B + unsigned("0" & IN1); --numeric_std defines 
+            Y1 <= A + B + unsigned("0" & IN1); --numeric_std defines
                                                --addition for unsigned
                                                --types.
 
