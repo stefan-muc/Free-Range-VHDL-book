@@ -94,7 +94,7 @@ Not only does VHDL have many defined data types but VHDL also allows you to defi
 \texttt{bit\_vector}: Replaced by the more powerful \texttt{std\_logic\_vector} type.\\
 \texttt{boolean}: As expected, it is a two-value enumerated type.\\
 \texttt{boolean vector}: It is the vector form of a \texttt{boolean} type.\\
-\texttt{integer}: Refer to the Integer Types section.\\
+\texttt{integer}: Refer to the \nameref{data_objects_integer_types} section.\\
 \texttt{natural}: It is a subtype of \texttt{integer} because it is a non-negative integer.\\
 \texttt{positive}: It is a subtype of \texttt{integer} because it is a positive integer.\\
 \texttt{integer\_vector}: It is the vector form of an \texttt{integer} type.\\
@@ -107,8 +107,12 @@ In the following sections, a few more popular and useful types are introduced.
 VHDL allows you to define your own data type. A typical example of a custom integer type is:
 
 \noindent
-\texttt{type my\_type is range 0 to 100;}\\
-\texttt{constant my\_const : my\_type := 31;}
+\begin{minipage}{0.99\linewidth}
+	\begin{lstlisting}
+type my_type is range 0 to 100;
+constant my_const : my_type := 31;
+	\end{lstlisting}
+\end{minipage}
 
 \noindent
 Obviously it is possible to define more complex data structures. For instance it is a common practice to use a custom data type when you want to implement a ROM (read-only memory) in VHDL.
@@ -142,11 +146,11 @@ The types already introduced in previous chapters as well as two new types are l
 \hline
 std\_logic\_vectors & \texttt{{\bf signal} busA : {\bf std\_logic\_vector}(3 downto 0)}; & all examples \\
 \hline
-\rowcolor{light-gray} enumerated &  \texttt{{\bf type} state\_type {\bf is} (ST0,ST1,ST2,ST3);} & Example~18\\
+\rowcolor{light-gray} enumerated &  \texttt{{\bf type} state\_type {\bf is} (ST0,ST1,ST2,ST3);} & \hyperref[example_18]{Example~18}\\
 \hline
 boolean & \texttt{{\bf variable} my\_test : {\bf boolean} := {\bf false};} & None \\
 \hline
-\rowcolor{light-gray} integer & \texttt{{\bf signal} iter\_cnt : {\bf integer} := 0;}  & Example~26 \\
+\rowcolor{light-gray} integer & \texttt{{\bf signal} iter\_cnt : {\bf integer} := 0;}  & \hyperref[example_26]{Example~26} \\
 \hline
 \end{tabular}}
 \caption{Some popular data types already introduced in previous chapters.}
@@ -154,6 +158,8 @@ boolean & \texttt{{\bf variable} my\_test : {\bf boolean} := {\bf false};} & Non
 \end{table}
 
 \section{Integer Types}
+\label{data_objects_integer_types}
+
 The use of integer types aids in the design of algorithmic-type VHDL code. This type of coding allows VHDL to describe the behaviour of complex digital circuits. As you progress in your digital studies, you will soon find yourself in need of more complex descriptive VHDL tools. Data types such as integers partially fill that desire. This section briefly looks at integer types as well as the definition of user-specified integer types.
 
 The range of the integer type is (-2,147,483,648 to 2,147,483,647). These numbers should seem familiar since they represent the standard 32-bit range for a signed number: from $-(2^{31})$ to $+(2^{31}-1)$. Other types similar to integers include natural and positive types. These types are basically integers with shifted ranges. For example, the natural and positive types range from 0 and 1 to the full 31-bit range, respectively. Examples of integer declarations are shown in the following listing.
@@ -214,7 +220,7 @@ A \texttt{signed} value ranges from $-2^{N-1}$ to $2^{N-1}-1$ and an \texttt{uns
 \begin{quotation}\ttfamily
 Why would I need to use a \textbf{\color{gray}signed} or \textbf{\color{gray}unsigned} type in place of a \textbf{\color{gray}std\_logic\_vector} type?
 \end{quotation}
-The answer to this question is in Listing~\ref{my_sum}, specifically in line 17 and in line 18. The \texttt{std\_logic\_vector} type should not be used to define a numerically meaningful\footnote{Numerically meaningful signal: a signal that looks and behave like a number.} signal or variable. The \texttt{std\_logic\_vector} type should be only employed for defining ``bags of bits''.
+The answer to this question is in Listing~\ref{my_sum}, specifically in line 17 and in line 18. The \texttt{std\_logic\_vector} type should not be used to define a numerically meaningful\footnote{Numerically meaningful signal: a signal that looks and behaves like a number.} signal or variable. The \texttt{std\_logic\_vector} type should be only employed for defining ``bags of bits''.
 
 The use of \texttt{signed/unsigned} types is desirable any time your bags of bits (signals, variables or constants) stop being ``bags'' and become numbers of type signed, unsigned or even integers.
 
@@ -233,16 +239,16 @@ entity double_sum is
         out1      : out std_logic_vector (7 downto 0));
         unsig_in  : in  unsigned(7 downto 0);
         unsig_out : out unsigned(7 downto 0));
-    end double_sum;
+end double_sum;
 -- architecture
 architecture arch of sum is
-    begin
-        out1 <= in1 + 1;  -- ILLEGAL OPERATION, 1 is an integer
-        out1 <= in1 + in2;-- ILLEGAL OPERATION, addition is not defined
-        unsig_out <= unsig_in + 1;                  -- legal operation
-        unsig_out <= unsigned(in1) + 1;             -- legal operation
-        out1 <= std_logic_vector(unsigned(in1) + 1);-- legal operation
-    end arch;
+begin
+    out1 <= in1 + 1;  -- ILLEGAL OPERATION, 1 is an integer
+    out1 <= in1 + in2;-- ILLEGAL OPERATION, addition is not defined
+    unsig_out <= unsig_in + 1;                  -- legal operation
+    unsig_out <= unsigned(in1) + 1;             -- legal operation
+    out1 <= std_logic_vector(unsigned(in1) + 1);-- legal operation
+end arch;
 \end{lstlisting}
 \end{minipage}
 
@@ -270,12 +276,13 @@ type std_logic is  ( 'U', -- uninitialised
 \end{lstlisting}
 \end{minipage}
 
-The \texttt{std\_logic} type uses the VHDL character type in its definition. Although there are nine values in the definition shown in Listing~\ref{logic_type}, this book only deals with \texttt{'0'},  \texttt{'1'},  \texttt{'Z'} and  \texttt{'-'}. The  \texttt{'Z'} is generally used when dealing with bus structures. This allows a signal or set of signals (a bus) to have the possibility of being driven by multiple sources without the need to generate resolution functions. When a signal is driven to its high-impedance state, the signal is not driven from that source and is effectively removed from the circuit. Finally, since the characters used in the \texttt{std\_logic} type are part of the definition, they must be used as listed. Mind the use of lower-case letters will generate an error.
+The \texttt{std\_logic} type uses the VHDL character type in its definition. Although there are nine values in the definition shown in Listing~\ref{logic_type}, this book only deals with \texttt{'0'},  \texttt{'1'},  \texttt{'Z'} and  \texttt{'-'}. The  \texttt{'Z'} is generally used when dealing with bus structures. This allows a signal or set of signals (a~bus) to have the possibility of being driven by multiple sources without the need to generate resolution functions. When a signal is driven to its high-impedance state, the signal is not driven from that source and is effectively removed from the circuit. Finally, since the characters used in the \texttt{std\_logic} type are part of the definition, they must be used as listed. Mind the use of lower-case letters will generate an error.
 \begin{leftbar}
 \begin{minipage}[t]{0.52\textwidth}
 \vspace{10pt}
 \noindent
 \textbf{EXAMPLE 26.}
+\label{example_26}
 Design a clock divider circuit that reduces the frequency of the input signal by a factor of 64. The circuit has two inputs as shown in the diagram. The  \texttt{div\_en} input allows the  \texttt{clk} signal to be divided when asserted and the  \texttt{sclk} output will exhibit a frequency 1/64 that of the  \texttt{clk} signal. When  \texttt{div\_en} is not asserted, the  \texttt{sclk} output remains low. Frequency division resets when the  \texttt{div\_en} signal is reasserted.
 \end{minipage}
 \begin{minipage}[t]{0.4\linewidth}
@@ -331,24 +338,24 @@ architecture my_clk_div of clk_div is
     type my_count is range 0 to 100;     -- user-defined type
     constant max_count : my_count := 31; -- user-defined constant
     signal tmp_sclk : std_logic;         -- intermediate signal
+begin
+    my_div: process (clk,div_en)
+    variable div_count : my_count := 0;
     begin
-        my_div: process (clk,div_en)
-        variable div_count : my_count := 0;
-        begin
-            if (div_en = '0') then
-                div_count := 0;
-                tmp_sclk <= '0';
-            elsif (rising_edge(clk)) then
-                    -- divider enabled
-                    if (div_count = max_count) then
-                        tmp_sclk <= not tmp_sclk;   -- toggle output
-                        div_count := 0;             -- reset count
-                    else
-                        div_count := div_count + 1; -- count
-                    end if;
-            end if;
-        end process my_div;
-        sclk <= tmp_sclk;                          -- final assignment
+        if (div_en = '0') then
+            div_count := 0;
+            tmp_sclk <= '0';
+        elsif (rising_edge(clk)) then
+                -- divider enabled
+                if (div_count = max_count) then
+                    tmp_sclk <= not tmp_sclk;   -- toggle output
+                    div_count := 0;             -- reset count
+                else
+                    div_count := div_count + 1; -- count
+                end if;
+        end if;
+    end process my_div;
+    sclk <= tmp_sclk;                          -- final assignment
 end my_clk_div;
 \end{lstlisting}
 \end{minipage}
